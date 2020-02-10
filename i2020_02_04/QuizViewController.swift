@@ -13,7 +13,19 @@ class QuizViewController: UIViewController {
     @IBOutlet weak var questionBox: UITextField!
     @IBOutlet weak var trueButton: UIButton!
     @IBOutlet weak var falseButton: UIButton!
+
+
+    @IBOutlet weak var scoreLabel: UILabel!
+    @IBOutlet weak var hintLabel: UILabel!
+    
+    
+    
     let Qs =  ListOfQuestions()
+    
+    
+    public var selection: Bool?
+    public var score: Int = 0
+    public var h: String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,12 +37,40 @@ class QuizViewController: UIViewController {
         
     }
     @IBAction func nextSelected(_ sender: Any) {
+        let c = Qs.currentQuestionNumbers()
+        if selection == Qs.allQs[c].isTrue{
+            score = Qs.correctAnswer()
+            scoreLabel.text = "Score: \(score)"
+        } else{
+            score = Qs.incorrectAnswer()
+            print(score)
+        }
+        
         let n = Qs.nextQuestionNumber()
         
         questionBox.text = Qs.allQs[n].statement
+        hintLabel.text = ""
+
+    }
+    
+    @IBAction func hintSelected(_ sender: Any) {
+        h = Qs.provideHint()
+        hintLabel.text = h
+    }
+    
+    @IBAction func trueSelected(_ sender: Any) {
+        print("True is selected.")
+        selection = true
+
+        
     }
     
     
-
+    @IBAction func falseSelected(_ sender: Any) {
+        print("False is selected")
+        selection = false
+    }
+    
+    
 }
 
