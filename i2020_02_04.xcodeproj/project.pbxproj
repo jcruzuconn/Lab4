@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3F0F4CCE2408B23100E1F420 /* Countries.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F0F4CCD2408B23100E1F420 /* Countries.swift */; };
 		3F30FB35240308CB00C88930 /* loginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F30FB34240308CB00C88930 /* loginViewController.swift */; };
 		8DE66A3D23E9E45D00BE3A22 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DE66A3C23E9E45D00BE3A22 /* AppDelegate.swift */; };
 		8DE66A3F23E9E45D00BE3A22 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DE66A3E23E9E45D00BE3A22 /* SceneDelegate.swift */; };
@@ -38,6 +39,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3F0F4CCD2408B23100E1F420 /* Countries.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Countries.swift; sourceTree = "<group>"; };
 		3F30FB34240308CB00C88930 /* loginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = loginViewController.swift; sourceTree = "<group>"; };
 		8DE66A3923E9E45D00BE3A22 /* i2020_02_04.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = i2020_02_04.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8DE66A3C23E9E45D00BE3A22 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -139,6 +141,7 @@
 		8DE66A6C23E9E4AB00BE3A22 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				3F0F4CCD2408B23100E1F420 /* Countries.swift */,
 				8DE66A6D23E9E4D800BE3A22 /* Question.swift */,
 				8DE66A6F23E9E53900BE3A22 /* ListOfQuestions.swift */,
 			);
@@ -281,6 +284,7 @@
 				3F30FB35240308CB00C88930 /* loginViewController.swift in Sources */,
 				8DE66A6E23E9E4D800BE3A22 /* Question.swift in Sources */,
 				8DE66A3D23E9E45D00BE3A22 /* AppDelegate.swift in Sources */,
+				3F0F4CCE2408B23100E1F420 /* Countries.swift in Sources */,
 				8DE66A3F23E9E45D00BE3A22 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

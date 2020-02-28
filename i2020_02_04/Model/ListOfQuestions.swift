@@ -1,30 +1,55 @@
-//
-//  ListOfQuestions.swift
-//  i2020_02_04
-//
-//  Created by Bradford, Phillip on 2/4/20.
-//  Copyright © 2020 Bradford, Phillip. All rights reserved.
-//
-
 import Foundation
 
-public class ListOfQuestions {
+public class Questions {
+
+    @Published var countries = [Country]()
+    public var countryNames = [Int:String]()
+    public var countryCapitals = [Int:String]()
+    public var allQs = [Question]()
+    
+    let url = "http://restcountries.eu/rest/v2/all"
+    
+    public func getQuestions() {
+        
+        let countryURL = URL(string: url)
+        
+        do{
+            let data = try Data(contentsOf: countryURL!)
+            self.countries = try JSONDecoder().decode([Country].self, from: data)
+            
+            for c in countries {
+                if (c.name.starts(with: "Germany")) {
+                    allQs.append(Question(statement: " The capital of \(c.name) is \(c.capital)", isTrue: true))}
+                if (c.name.starts(with: "China")) {
+                    allQs.append(Question(statement: " The capital of \(c.name) is Tokyo", isTrue: false))}
+                if (c.name.starts(with: "Cyprus")) {
+                    allQs.append(Question(statement: " The capital of \(c.name) is \(c.capital)", isTrue: true))}
+                if (c.name.starts(with: "Philippines")) {
+                    allQs.append(Question(statement: " The capital of \(c.name) is \(c.capital)", isTrue: true))}
+                if (c.name.starts(with: "Mexico")) {
+                    allQs.append(Question(statement: " The capital of \(c.name) is London", isTrue: false))}
+
+
+            }} catch{
+                print(error)
+            }
+    }
     
     public var correctAnswers: Int = 0
     public var totalQuestionsAsked: Int = 0
     private var currentQuestionNumber: Int = 0
-    public let allHints = ["Alaska is a state", "Central America is not a continent", "Asia contains China and India", "Greece is in Europe",
-    "Delaware is the 2nd smallest state", "Egypt is in Africa"]
+    public let allHints = [ "False", "True", "True", "False",
+                                  "True"]
     
-    public let allQs = [
-        Question(statement: "Alaska is in South America", isTrue: false),
-        Question(statement: "Central America is a continent", isTrue: false),
-        Question(statement: "Asia is the largest continent", isTrue: true),
-        Question(statement: "Greece borders the Mediterranean sea", isTrue: true),
-        Question(statement: "Rhode Island is the smallest state in the US", isTrue: true ),
-        Question(statement: "Egypt is in Europe", isTrue: false )
-
-    ]
+//    public let allQs = [
+//        Question(statement: " capital is Washington DC", isTrue: false),
+//        Question(statement: "Central America is a continent", isTrue: false),
+//        Question(statement: "Asia is the largest continent", isTrue: true),
+//        Question(statement: "Greece borders the Mediterranean sea", isTrue: true),
+//        Question(statement: "Rhode Island is the smallest state in the US", isTrue: true ),
+//        Question(statement: "Egypt is in Europe", isTrue: false )
+//
+//    ]
              
     public func correctAnswer() -> Int {
         correctAnswers = correctAnswers + 1
@@ -39,6 +64,9 @@ public class ListOfQuestions {
     
     public func nextQuestionNumber() -> Int {
         currentQuestionNumber = currentQuestionNumber + 1
+        if currentQuestionNumber == 5{
+            currentQuestionNumber = 0
+        }
         return currentQuestionNumber % allQs.count
     }
     public func currentQuestionNumbers() -> Int {
@@ -46,6 +74,7 @@ public class ListOfQuestions {
 }
     
     public func provideHint() -> String {
-        return allHints[currentQuestionNumber]
+        return allHints[currentQuestionNumber % 5]
     }
 }
+

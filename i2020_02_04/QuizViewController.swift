@@ -18,17 +18,17 @@ class QuizViewController: UIViewController {
     @IBOutlet weak var scoreLabel: UILabel!
     @IBOutlet weak var hintLabel: UILabel!
     
-    
-    
-    let Qs =  ListOfQuestions()
+    let Qs =  Questions()
     
     
     public var selection: Bool?
     public var score: Int = 0
     public var h: String = ""
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        Qs.getQuestions()
         
         
         
@@ -64,7 +64,6 @@ class QuizViewController: UIViewController {
 
         
     }
-    
     
     @IBAction func falseSelected(_ sender: Any) {
         print("False is selected")
